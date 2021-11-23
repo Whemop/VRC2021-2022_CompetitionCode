@@ -1,4 +1,27 @@
 #include "main.h"
+/**
+ * TODO:
+ * Replace ? with actual motor port values
+ *
+ */
+
+/**
+ * Motor Definitions
+ *
+ * Use this area to define names to motor ports, keeping every definition
+ * in one space makes motor managment sustainable on large scales.
+ *
+ * NOTE: Left and Right are defined from a perspective looking at the robot
+ * from behind.
+ */
+#define LEFT_DRIVE_PORT ?
+#define RIGHT_DRIVE_PORT ?
+#define LEFT_ARM_PORT ?
+#define RIGHT_ARM_PORT ?
+#define FRONT_LOADER_PORT ?
+#define REAR_LEFT_ARM_PORT ?
+#define REAR_RIGHT_ARM_PORT ?
+#define RING_LOADER_PORT ?
 
 /**
  * A callback function for LLEMU's center button.
