@@ -302,6 +302,11 @@
                 "version": "4.2.0"
             }
         },
-        "upload_options": {}
+        "upload_options": {
+            "compress_bin": true,
+            "description": "Created with Pain",
+            "remote_name": "VRC2021-2022_CompetitionCode",
+            "slot": 2
+        }
     }
 }

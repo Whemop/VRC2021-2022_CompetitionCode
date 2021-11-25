@@ -1,7 +1,7 @@
 #include "main.h"
 /**
  * TODO:
- * Replace ? with actual motor port values
+ * (11/23/2021) Replace ? with actual motor port values
  *
  */
 
@@ -14,14 +14,14 @@
  * NOTE: Left and Right are defined from a perspective looking at the robot
  * from behind.
  */
-#define LEFT_DRIVE_PORT ?
-#define RIGHT_DRIVE_PORT ?
-#define LEFT_ARM_PORT ?
-#define RIGHT_ARM_PORT ?
-#define FRONT_LOADER_PORT ?
-#define REAR_LEFT_ARM_PORT ?
-#define REAR_RIGHT_ARM_PORT ?
-#define RING_LOADER_PORT ?
+const uint8_t LEFT_DRIVE_PORT = 20;
+const uint8_t RIGHT_DRIVE_PORT = 11;
+const uint8_t LEFT_ARM_PORT = 2;
+const uint8_t RIGHT_ARM_PORT = 12;
+const uint8_t FRONT_LOADER_PORT = 6;
+const uint8_t REAR_LEFT_ARM_PORT = 3;
+const uint8_t REAR_RIGHT_ARM_PORT = 10;
+const uint8_t RING_LOADER_PORT = 1;
 
 /**
  * A callback function for LLEMU's center button.
@@ -98,18 +98,23 @@ void autonomous() {}
  */
 void opcontrol() {
 	pros::Controller master(pros::E_CONTROLLER_MASTER);
-	pros::Motor left_mtr(1);
-	pros::Motor right_mtr(2);
+	pros::Motor left_wheel(LEFT_DRIVE_PORT);
+	pros::Motor right_wheel(RIGHT_DRIVE_PORT, true);
+	//pros::Motor debug(PORT);
 
 	while (true) {
 		pros::lcd::print(0, "%d %d %d", (pros::lcd::read_buttons() & LCD_BTN_LEFT) >> 2,
-		                 (pros::lcd::read_buttons() & LCD_BTN_CENTER) >> 1,
-		                 (pros::lcd::read_buttons() & LCD_BTN_RIGHT) >> 0);
-		int left = master.get_analog(ANALOG_LEFT_Y);
-		int right = master.get_analog(ANALOG_RIGHT_Y);
+		                 								(pros::lcd::read_buttons() & LCD_BTN_CENTER) >> 1,
+		                 								(pros::lcd::read_buttons() & LCD_BTN_RIGHT) >> 0);
 
-		left_mtr = left;
-		right_mtr = right;
-		pros::delay(20);
+		int power = master.get_analog(ANALOG_LEFT_Y);
+		int turn = master.get_analog(ANALOG_RIGHT_X);
+		int left = power + turn;
+		int right = power - turn;
+		left_wheel.move(left);
+		right_wheel.move(right);
+
+		//debug.move(master.get_analog(INPUT));
+		pros::delay(2);
 	}
 }
