@@ -304,9 +304,9 @@
         },
         "upload_options": {
             "compress_bin": true,
-            "description": "Created with Pain",
+            "description": "Created with Minor Pain",
             "remote_name": "VRC2021-2022_CompetitionCode",
-            "slot": 2
+            "slot": 1
         }
     }
 }

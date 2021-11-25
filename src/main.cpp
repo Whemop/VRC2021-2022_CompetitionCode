@@ -1,7 +1,16 @@
 #include "main.h"
 /**
+ * NOTE: To get code to properly upload to the robot, you must first save the
+ * entire project (File>Save All). Then open a command line (cmd.exe or
+ * terminal) and run "prosv5 make all" without the quotes. Then return to PROS
+ * and use the upload tool (PROS>Upload). The build tool in the Atom/PROS editor
+ * is broken and does not remove the old build files, then uploads the unchanged
+ * files to the robot which changes nothing.
+ * Also you cannot upload code to the controller, only directly to the robot.
+ *
  * TODO:
- * (11/23/2021) Replace ? with actual motor port values
+ * (11/23/2021) Replace ? with actual motor port values [DONE]
+ * (11/24/2021) Assign Controller Commands to all motors and verify
  *
  */
 
@@ -97,22 +106,91 @@ void autonomous() {}
  * task, not resume it from where it left off.
  */
 void opcontrol() {
+	//Local motor name to global motor name assignment
 	pros::Controller master(pros::E_CONTROLLER_MASTER);
 	pros::Motor left_wheel(LEFT_DRIVE_PORT);
-	pros::Motor right_wheel(RIGHT_DRIVE_PORT, true);
+	pros::Motor right_wheel(RIGHT_DRIVE_PORT, true); //true reverses motor
+	pros::Motor arm_left(LEFT_ARM_PORT, MOTOR_GEARSET_36, true);
+	pros::Motor arm_right(RIGHT_ARM_PORT, MOTOR_GEARSET_36);
+	pros::Motor rear_arm_left(REAR_LEFT_ARM_PORT);
+	pros::Motor rear_arm_right(REAR_RIGHT_ARM_PORT, true);
+	pros::Motor front_loader(FRONT_LOADER_PORT);
+	pros::Motor rear_loader(RING_LOADER_PORT, true);
 	//pros::Motor debug(PORT);
 
+	//Motor brake mode assignment
+	arm_left.set_brake_mode(MOTOR_BRAKE_HOLD);
+	arm_right.set_brake_mode(MOTOR_BRAKE_HOLD);
+	rear_arm_left.set_brake_mode(MOTOR_BRAKE_HOLD);
+	rear_arm_right.set_brake_mode(MOTOR_BRAKE_HOLD);
+	front_loader.set_brake_mode(MOTOR_BRAKE_HOLD);
+	//debug.set_brake_mode(MODE);
+
+	//Runtime loop
 	while (true) {
 		pros::lcd::print(0, "%d %d %d", (pros::lcd::read_buttons() & LCD_BTN_LEFT) >> 2,
 		                 								(pros::lcd::read_buttons() & LCD_BTN_CENTER) >> 1,
 		                 								(pros::lcd::read_buttons() & LCD_BTN_RIGHT) >> 0);
-
+		//Left and right Motor control
 		int power = master.get_analog(ANALOG_LEFT_Y);
 		int turn = master.get_analog(ANALOG_RIGHT_X);
 		int left = power + turn;
 		int right = power - turn;
 		left_wheel.move(left);
 		right_wheel.move(right);
+
+		//Arm left and Right Motor control
+		if (master.get_digital(DIGITAL_R1)) {
+			arm_left.move_velocity(100);
+			arm_right.move_velocity(100);
+			//.move_velocity uses RPM as unit, so in this case 100 = 100rpm, or the
+			//max speed of a red motor cartridge
+		}
+		else if (master.get_digital(DIGITAL_R2)) {
+			arm_left.move_velocity(-100);
+			arm_right.move_velocity(-100);
+		}
+		else {
+			arm_left.move_velocity(0);
+			arm_right.move_velocity(0);
+		}
+
+		//Rear Arm Left and Right Motor control
+		if (master.get_digital(DIGITAL_X)) {
+			rear_arm_left.move_velocity(200);
+			rear_arm_right.move_velocity(200);
+			//as above, 200 = 200rpm, the max speed of a green motor cartridge
+		}
+		else if (master.get_digital(DIGITAL_B)) {
+			rear_arm_left.move_velocity(-200);
+			rear_arm_right.move_velocity(-200);
+		}
+		else {
+			rear_arm_left.move_velocity(0);
+			rear_arm_right.move_velocity(0);
+		}
+
+		//Grabber Motor Control
+		if (master.get_digital(DIGITAL_L1)) {
+			front_loader.move_velocity(200);
+		}
+		else if (master.get_digital(DIGITAL_L2)) {
+			front_loader.move_velocity(-200);
+		}
+		else {
+			front_loader.move_velocity(0);
+		}
+
+		//Ring intake Motor Controller
+		if (master.get_digital(DIGITAL_UP)) {
+			rear_loader.move_velocity(200);
+		}
+		else if (master.get_digital(DIGITAL_DOWN)) {
+			rear_loader.move_velocity(-200);
+		}
+		else {
+			rear_loader.move_velocity(0);
+		}
 
 		//debug.move(master.get_analog(INPUT));
 		pros::delay(2);
