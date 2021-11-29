@@ -1,6 +1,7 @@
 # VRC2021-2022_CompetitionCode
 Code and other files used by Team 44012A "SpaceVEX" in Vex Robotics Competitions.
 
+autoSelect by Marsgate on GitHub: https://github.com/kunwarsahni01/Vex-Autonomous-Selector
 
 NOTES
  - Uploading Code:
