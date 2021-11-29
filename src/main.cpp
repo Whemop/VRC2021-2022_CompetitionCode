@@ -132,7 +132,10 @@ void autonomous() {
 	//Autonomous Selector by Marsgate on GitHub
 	//Red Left
 	if(selector::auton == 1){
-
+		front_loader.move_relative(-1000, 100);
+		//.move_relative is writen with a target position and velocity, the target
+		//position is stored in Encoder Units, which can be found on the Vex
+		//Robotics Spec page for the v5 Motors.
 	}
 
 	//Red Right
@@ -142,12 +145,12 @@ void autonomous() {
 
 	//Red Do Nothing
 	if(selector::auton == 3){
-
+		//Leave empty
 	}
 
 	//Blue Left
 	if(selector::auton == -1){
-
+		front_loader.move_relative(-1000, 100);
 	}
 
 	//Blue Right
@@ -157,7 +160,7 @@ void autonomous() {
 
 	//Blue Do Nothing
 	if(selector::auton == -3){
-
+		//leave empty
 	}
 
 	//Skills
