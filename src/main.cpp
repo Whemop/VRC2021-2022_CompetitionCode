@@ -1,4 +1,5 @@
 #include "main.h"
+#include "autoSelect/selection.h"
 /**
  * NOTE: To get code to properly upload to the robot, you must first save the
  * entire project (File>Save All). Then open a command line (cmd.exe or
@@ -44,15 +45,19 @@ const uint8_t RING_LOADER_PORT = 1;
  * When this callback is fired, it will toggle line 2 of the LCD text between
  * "I was pressed!" and nothing.
  */
+
+/** Legacy Code removed but left in commit for redundancy
 void on_center_button() {
 	static bool pressed = false;
 	pressed = !pressed;
 	if (pressed) {
-		pros::lcd::set_text(2, "I was pressed!");
+		pros::lcd::clear_line(2);
+		pros::lcd::set_text(2, "Pressed");
 	} else {
 		pros::lcd::clear_line(2);
 	}
 }
+**/
 
 /**
  * Runs initialization code. This occurs as soon as the program is started.
@@ -61,10 +66,13 @@ void on_center_button() {
  * to keep execution time for this mode under a few seconds.
  */
 void initialize() {
+	selector::init();
+	/** Legacy Code removed but left in commit for redundancy
 	pros::lcd::initialize();
-	pros::lcd::set_text(1, "Hello PROS User!");
+	pros::lcd::set_text(1, "Placeholder Text");
 
 	pros::lcd::register_btn1_cb(on_center_button);
+	**/
 }
 
 /**
@@ -72,7 +80,9 @@ void initialize() {
  * the VEX Competition Switch, following either autonomous or opcontrol. When
  * the robot is enabled, this task will exit.
  */
-void disabled() {}
+void disabled() {
+
+}
 
 /**
  * Runs after initialize(), and before autonomous when connected to the Field
@@ -83,7 +93,9 @@ void disabled() {}
  * This task will exit when the robot is enabled and autonomous or opcontrol
  * starts.
  */
-void competition_initialize() {}
+void competition_initialize() {
+
+}
 
 /**
  * Runs the user autonomous code. This function will be started in its own task
@@ -96,7 +108,63 @@ void competition_initialize() {}
  * will be stopped. Re-enabling the robot will restart the task, not re-start it
  * from where it left off.
  */
-void autonomous() {}
+void autonomous() {
+	//Local motor name to global motor name assignment
+	pros::Controller master(pros::E_CONTROLLER_MASTER);
+	pros::Motor left_wheel(LEFT_DRIVE_PORT);
+	pros::Motor right_wheel(RIGHT_DRIVE_PORT, true); //true reverses motor
+	pros::Motor arm_left(LEFT_ARM_PORT, MOTOR_GEARSET_36, true);
+	pros::Motor arm_right(RIGHT_ARM_PORT, MOTOR_GEARSET_36);
+	pros::Motor rear_arm_left(REAR_LEFT_ARM_PORT);
+	pros::Motor rear_arm_right(REAR_RIGHT_ARM_PORT, true);
+	pros::Motor front_loader(FRONT_LOADER_PORT);
+	pros::Motor rear_loader(RING_LOADER_PORT, true);
+	//pros::Motor debug(PORT);
+
+	//Motor brake mode assignment
+	arm_left.set_brake_mode(MOTOR_BRAKE_HOLD);
+	arm_right.set_brake_mode(MOTOR_BRAKE_HOLD);
+	rear_arm_left.set_brake_mode(MOTOR_BRAKE_HOLD);
+	rear_arm_right.set_brake_mode(MOTOR_BRAKE_HOLD);
+	front_loader.set_brake_mode(MOTOR_BRAKE_HOLD);
+	//debug.set_brake_mode(MODE);
+
+	//Autonomous Selector by Marsgate on GitHub
+	//Red Left
+	if(selector::auton == 1){
+
+	}
+
+	//Red Right
+	if(selector::auton == 2){
+
+	}
+
+	//Red Do Nothing
+	if(selector::auton == 3){
+
+	}
+
+	//Blue Left
+	if(selector::auton == -1){
+
+	}
+
+	//Blue Right
+	if(selector::auton == -2){
+
+	}
+
+	//Blue Do Nothing
+	if(selector::auton == -3){
+
+	}
+
+	//Skills
+	if(selector::auton == 0){
+
+	}
+}
 
 /**
  * Runs the operator control code. This function will be started in its own task
