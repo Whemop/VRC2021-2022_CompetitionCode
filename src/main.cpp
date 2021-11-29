@@ -12,8 +12,8 @@
  * TODO:
  * (11/23/2021) Replace ? with actual motor port values [DONE]
  * (11/24/2021) Assign Controller Commands to all motors and verify [DONE]
- * (11/24/2021) Create framework for an on-demand option selector as a utility
- * tool during prematch routines []
+ * (11/24/2021) Implememt framework for an on-demand option selector as a utility
+ * tool during prematch routines [DONE]
  * (11/24/2021) Make Front Arm automacally move out of the way for option
  * selection, then return after selection is done (with a wait period so nobody
  * get their hands crushed) []
