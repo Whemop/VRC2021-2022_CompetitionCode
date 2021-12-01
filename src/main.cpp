@@ -122,8 +122,8 @@ void autonomous() {
 	//pros::Motor debug(PORT);
 
 	//Motor brake mode assignment
-	arm_left.set_brake_mode(MOTOR_BRAKE_HOLD);
-	arm_right.set_brake_mode(MOTOR_BRAKE_HOLD);
+	//arm_left.set_brake_mode(MOTOR_BRAKE_HOLD);
+	//arm_right.set_brake_mode(MOTOR_BRAKE_HOLD);
 	rear_arm_left.set_brake_mode(MOTOR_BRAKE_HOLD);
 	rear_arm_right.set_brake_mode(MOTOR_BRAKE_HOLD);
 	front_loader.set_brake_mode(MOTOR_BRAKE_HOLD);
@@ -140,7 +140,19 @@ void autonomous() {
 
 	//Red Right
 	if(selector::auton == 2){
-
+		left_wheel.move_velocity(100);
+		right_wheel.move_velocity(100);
+		pros::delay(2000);
+		left_wheel.move_velocity(0);
+		right_wheel.move_velocity(0);
+		front_loader.move_velocity(100);
+		pros::delay(1500);
+		left_wheel.move_velocity(-100);
+		right_wheel.move_velocity(-100);
+		front_loader.move_velocity(0);
+		pros::delay(2000);
+		left_wheel.move_velocity(0);
+		right_wheel.move_velocity(0);
 	}
 
 	//Red Do Nothing
@@ -155,7 +167,19 @@ void autonomous() {
 
 	//Blue Right
 	if(selector::auton == -2){
-
+		left_wheel.move_velocity(100);
+		right_wheel.move_velocity(100);
+		pros::delay(2000);
+		left_wheel.move_velocity(0);
+		right_wheel.move_velocity(0);
+		front_loader.move_velocity(100);
+		pros::delay(1500);
+		left_wheel.move_velocity(-100);
+		right_wheel.move_velocity(-100);
+		front_loader.move_velocity(0);
+		pros::delay(2000);
+		left_wheel.move_velocity(0);
+		right_wheel.move_velocity(0);		
 	}
 
 	//Blue Do Nothing
@@ -201,6 +225,8 @@ void opcontrol() {
 	rear_arm_left.set_brake_mode(MOTOR_BRAKE_HOLD);
 	rear_arm_right.set_brake_mode(MOTOR_BRAKE_HOLD);
 	front_loader.set_brake_mode(MOTOR_BRAKE_HOLD);
+	left_wheel.set_brake_mode(MOTOR_BRAKE_HOLD);
+	right_wheel.set_brake_mode(MOTOR_BRAKE_HOLD);
 	//debug.set_brake_mode(MODE);
 
 	//Runtime loop
