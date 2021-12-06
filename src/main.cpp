@@ -179,7 +179,7 @@ void autonomous() {
 		front_loader.move_velocity(0);
 		pros::delay(2000);
 		left_wheel.move_velocity(0);
-		right_wheel.move_velocity(0);		
+		right_wheel.move_velocity(0);
 	}
 
 	//Blue Do Nothing
@@ -234,13 +234,26 @@ void opcontrol() {
 		pros::lcd::print(0, "%d %d %d", (pros::lcd::read_buttons() & LCD_BTN_LEFT) >> 2,
 		                 								(pros::lcd::read_buttons() & LCD_BTN_CENTER) >> 1,
 		                 								(pros::lcd::read_buttons() & LCD_BTN_RIGHT) >> 0);
-		//Left and right Motor control
-		int power = master.get_analog(ANALOG_LEFT_Y);
-		int turn = master.get_analog(ANALOG_RIGHT_X);
-		int left = power + turn;
-		int right = power - turn;
-		left_wheel.move(left);
-		right_wheel.move(right);
+
+		//Invert drive directions while A is pressed
+		if (master.get_digital(DIGITAL_A)) {
+		  //Left and right inverted Motor control
+		  int power = master.get_analog(ANALOG_LEFT_Y);
+		  int turn = master.get_analog(ANALOG_RIGHT_X);
+		  int left = power + turn;
+		  int right = power - turn;
+		  left_wheel.move(-1 * left);
+		  right_wheel.move(-1 * right);
+		  }
+		else {
+			//Left and right Motor control
+			int power = master.get_analog(ANALOG_LEFT_Y);
+			int turn = master.get_analog(ANALOG_RIGHT_X);
+			int left = power + turn;
+			int right = power - turn;
+			left_wheel.move(-1 * left);
+			right_wheel.move(-1 * right);
+		}
 
 		//Arm left and Right Motor control
 		if (master.get_digital(DIGITAL_R1)) {
