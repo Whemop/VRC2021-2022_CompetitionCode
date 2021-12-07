@@ -244,15 +244,15 @@ void opcontrol() {
 		  int right = power - turn;
 		  left_wheel.move(-1 * left);
 		  right_wheel.move(-1 * right);
-		  }
+		}
 		else {
 			//Left and right Motor control
 			int power = master.get_analog(ANALOG_LEFT_Y);
 			int turn = master.get_analog(ANALOG_RIGHT_X);
 			int left = power + turn;
 			int right = power - turn;
-			left_wheel.move(-1 * left);
-			right_wheel.move(-1 * right);
+			left_wheel.move(left);
+			right_wheel.move(right);
 		}
 
 		//Arm left and Right Motor control
