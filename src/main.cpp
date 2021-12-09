@@ -145,7 +145,7 @@ void autonomous() {
 		pros::delay(2000);
 		left_wheel.move_velocity(0);
 		right_wheel.move_velocity(0);
-		front_loader.move_velocity(100);
+		front_loader.move_velocity(-100);
 		pros::delay(1500);
 		left_wheel.move_velocity(-100);
 		right_wheel.move_velocity(-100);
@@ -172,7 +172,7 @@ void autonomous() {
 		pros::delay(2000);
 		left_wheel.move_velocity(0);
 		right_wheel.move_velocity(0);
-		front_loader.move_velocity(100);
+		front_loader.move_velocity(-100);
 		pros::delay(1500);
 		left_wheel.move_velocity(-100);
 		right_wheel.move_velocity(-100);
