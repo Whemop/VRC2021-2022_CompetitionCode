@@ -288,13 +288,18 @@ void opcontrol() {
 
 		//Grabber Motor Control
 		if (master.get_digital(DIGITAL_L1)) {
-			front_loader.move_velocity(200);
+			front_loader.move_absolute(-2000, 200);
+			// move_absolute works with a position and a velocity, unlike move_relative
+			// however, move_absolute sets the zero point to the position the motor was
+			// started in when the program is run.
 		}
+		/* Irrelevant Code, left in for redundancy
 		else if (master.get_digital(DIGITAL_L2)) {
-			front_loader.move_velocity(-200);
+			front_loader.move_relative(-2000, 100);
 		}
+		*/
 		else {
-			front_loader.move_velocity(0);
+			front_loader.move_absolute(0, 200);
 		}
 
 		//Ring intake Motor Controller
