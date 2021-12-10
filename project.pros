@@ -320,9 +320,9 @@
         },
         "upload_options": {
             "compress_bin": true,
-            "description": "Created with Minimal Pain",
-            "remote_name": "Experimental VRC2021-2022_CompetitionCode",
-            "slot": 2
+            "description": "Created with Happy Thoughts and Github Magic",
+            "remote_name": "VRC2021-2022_CompetitionCode",
+            "slot": 1
         }
     }
 }
