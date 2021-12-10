@@ -288,13 +288,15 @@ void opcontrol() {
 
 		//Grabber Motor Control
 		if (master.get_digital(DIGITAL_L1)) {
-			front_loader.move_relative(2000, 100);
+			front_loader.move_absolute(-2000, 200);
 		}
+		/* Irrelevant Code, left in for redundancy
 		else if (master.get_digital(DIGITAL_L2)) {
 			front_loader.move_relative(-2000, 100);
 		}
+		*/
 		else {
-			front_loader.move_absolute(0, 100);
+			front_loader.move_absolute(0, 200);
 		}
 
 		//Ring intake Motor Controller
