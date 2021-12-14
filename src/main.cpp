@@ -18,7 +18,7 @@
  * selection, then return after selection is done (with a wait period so nobody
  * get their hands crushed) []
  * (11/24/2021) Add diagnostics data to screen during runtime for debug []
- *
+ * (12/14/2021) Add runtime code to keep both arm motors alligned []
  */
 
 /**
@@ -40,26 +40,6 @@ const uint8_t REAR_RIGHT_ARM_PORT = 10;
 const uint8_t RING_LOADER_PORT = 1;
 
 /**
- * A callback function for LLEMU's center button.
- *
- * When this callback is fired, it will toggle line 2 of the LCD text between
- * "I was pressed!" and nothing.
- */
-
-/** Legacy Code removed but left in commit for redundancy
-void on_center_button() {
-	static bool pressed = false;
-	pressed = !pressed;
-	if (pressed) {
-		pros::lcd::clear_line(2);
-		pros::lcd::set_text(2, "Pressed");
-	} else {
-		pros::lcd::clear_line(2);
-	}
-}
-**/
-
-/**
  * Runs initialization code. This occurs as soon as the program is started.
  *
  * All other competition modes are blocked by initialize; it is recommended
@@ -67,12 +47,6 @@ void on_center_button() {
  */
 void initialize() {
 	selector::init();
-	/** Legacy Code removed but left in commit for redundancy
-	pros::lcd::initialize();
-	pros::lcd::set_text(1, "Placeholder Text");
-
-	pros::lcd::register_btn1_cb(on_center_button);
-	**/
 }
 
 /**
@@ -122,8 +96,6 @@ void autonomous() {
 	//pros::Motor debug(PORT);
 
 	//Motor brake mode assignment
-	//arm_left.set_brake_mode(MOTOR_BRAKE_HOLD);
-	//arm_right.set_brake_mode(MOTOR_BRAKE_HOLD);
 	rear_arm_left.set_brake_mode(MOTOR_BRAKE_HOLD);
 	rear_arm_right.set_brake_mode(MOTOR_BRAKE_HOLD);
 	front_loader.set_brake_mode(MOTOR_BRAKE_HOLD);
@@ -293,11 +265,6 @@ void opcontrol() {
 			// however, move_absolute sets the zero point to the position the motor was
 			// started in when the program is run.
 		}
-		/* Irrelevant Code, left in for redundancy
-		else if (master.get_digital(DIGITAL_L2)) {
-			front_loader.move_relative(-2000, 100);
-		}
-		*/
 		else {
 			front_loader.move_absolute(0, 200);
 		}
