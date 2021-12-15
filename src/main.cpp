@@ -19,6 +19,7 @@
  * get their hands crushed) []
  * (11/24/2021) Add diagnostics data to screen during runtime for debug []
  * (12/14/2021) Add runtime code to keep both arm motors alligned []
+ * (12/15/2021) Create an autonomous option that runs motor tests for debug []
  */
 
 /**
