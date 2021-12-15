@@ -244,18 +244,14 @@ void opcontrol() {
 		}
 
 		//Rear Arm Left and Right Motor control
-		if (master.get_digital(DIGITAL_X)) {
-			rear_arm_left.move_velocity(200);
-			rear_arm_right.move_velocity(200);
+		if (master.get_digital(DIGITAL_L2)) {
+			rear_arm_left.move_absolute(-700, 200);
+			rear_arm_right.move_absolute(-700, 200);
 			//as above, 200 = 200rpm, the max speed of a green motor cartridge
 		}
-		else if (master.get_digital(DIGITAL_B)) {
-			rear_arm_left.move_velocity(-200);
-			rear_arm_right.move_velocity(-200);
-		}
 		else {
-			rear_arm_left.move_velocity(0);
-			rear_arm_right.move_velocity(0);
+			rear_arm_left.move_absolute(0, 200);
+			rear_arm_right.move_absolute(0, 200);
 		}
 
 		//Grabber Motor Control
