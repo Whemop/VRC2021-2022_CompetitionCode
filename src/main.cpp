@@ -245,8 +245,8 @@ void opcontrol() {
 
 		//Rear Arm Left and Right Motor control
 		if (master.get_digital(DIGITAL_L2)) {
-			rear_arm_left.move_absolute(2000, 200);
-			rear_arm_right.move_absolute(2000, 200);
+			rear_arm_left.move_absolute(-700, 200);
+			rear_arm_right.move_absolute(-700, 200);
 			//as above, 200 = 200rpm, the max speed of a green motor cartridge
 		}
 		else {
