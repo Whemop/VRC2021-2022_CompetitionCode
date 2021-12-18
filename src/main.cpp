@@ -162,7 +162,26 @@ void autonomous() {
 
 	//Skills
 	if(selector::auton == 0){
-
+		left_wheel.move_velocity(100);
+		right_wheel.move_velocity(100);
+		pros::delay(6000);
+		left_wheel.move_velocity(0);
+		right_wheel.move_velocity(0);
+		//front_loader.move_velocity(-100);
+		pros::delay(1500);
+		left_wheel.move_velocity(-100);
+		right_wheel.move_velocity(-100);
+		//front_loader.move_velocity(0);
+		pros::delay(3000);
+		left_wheel.move_velocity(0);
+		right_wheel.move_velocity(0);
+		pros::delay(1500);
+		left_wheel.move_velocity(-100);
+		right_wheel.move_velocity(100);
+		pros::delay(1000);
+		left_wheel.move_velocity(100);
+		right_wheel.move_velocity(100);
+		pros::delay(6000);
 	}
 }
 
