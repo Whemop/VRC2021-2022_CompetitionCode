@@ -320,9 +320,9 @@
         },
         "upload_options": {
             "compress_bin": true,
-            "description": "Created with Happy Thoughts and Github Magic",
-            "remote_name": "Experimental",
-            "slot": 2
+            "description": "Created with Happy Thoughts and Github Magic, Spence carries 44012A",
+            "remote_name": "VRC2021",
+            "slot": 1
         }
     }
 }

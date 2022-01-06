@@ -20,6 +20,8 @@
  * (11/24/2021) Add diagnostics data to screen during runtime for debug []
  * (12/14/2021) Add runtime code to keep both arm motors alligned []
  * (12/15/2021) Create an autonomous option that runs motor tests for debug []
+ * (1/6/2022) Restructure definitions so all files reference define.cpp for motor
+ * ports []
  */
 
 /**
@@ -30,6 +32,8 @@
  *
  * NOTE: Left and Right are defined from a perspective looking at the robot
  * from behind.
+ * NOTE: Remember to change motor definitions in "define.cpp" as well, autonomous
+ * WILL break if you don't.
  */
 const uint8_t LEFT_DRIVE_PORT = 20;
 const uint8_t RIGHT_DRIVE_PORT = 11;
@@ -181,7 +185,7 @@ void autonomous() {
 		pros::delay(1000);
 		left_wheel.move_velocity(100);
 		right_wheel.move_velocity(100);
-		pros::delay(6000);
+		pros::delay(6000);``
 	}
 }
 
