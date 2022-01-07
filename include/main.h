@@ -36,6 +36,48 @@
 
 #include "api.h"
 
+extern pros::Motor Left_Drive;
+extern pros::Motor Right_Drive;
+extern pros::Motor Grabber;
+extern pros::Motor Left_Arm;
+extern pros::Motor Right_Arm;
+extern pros::Motor Rear_Left_Arm;
+extern pros::Motor Rear_Right_Arm;
+//extern pros::ADIAnalogIn Ang_Pot;
+//extern pros::Motor Arm;
+extern pros::Controller master;
+//extern pros::Imu inert;
+//extern pros::ADIEncoder rEnc;
+//extern pros::ADIEncoder lEnc;
+
+//
+class Timer {
+private:
+  int lastTime = pros::millis();
+
+public:
+  int myTime;
+  int currentTime;
+
+    int getTime()
+    {
+      myTime = pros::millis();
+      currentTime = myTime - lastTime;
+      return currentTime;
+    }
+
+    void resetTimer()
+    {
+      lastTime = pros::millis();
+    }
+
+};
+/**
+ * You should add more #includes here
+ */
+#include "okapi/api.hpp"
+#include "pros/api_legacy.h"
+
 /**
  * You should add more #includes here
  */

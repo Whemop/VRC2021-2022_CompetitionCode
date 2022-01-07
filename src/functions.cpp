@@ -1,29 +1,29 @@
 #include "main.h"
 
 void resetSensors(){
-   Left_Front_Drive.tare_position();
-   Left_Back_Drive.tare_position();
-   Right_Front_Drive.tare_position();
-   Right_Back_Drive.tare_position();
-   Right_Roller.tare_position();
-   Left_Roller.tare_position();
-   Angler.tare_position();
-   rEnc.reset();
-   lEnc.reset();
+   Left_Drive.tare_position();
+   Right_Drive.tare_position();
+   Grabber.tare_position();
+   Left_Arm.tare_position();
+   Right_Arm.tare_position();
+   Rear_Left_Arm.tare_position();
+   Rear_Right_Arm.tare_position();
+   //rEnc.reset();
+   //lEnc.reset();
 }
 
 void resetDriveTrain(){
-    Left_Front_Drive.tare_position();
-    Left_Back_Drive.tare_position();
-    Right_Front_Drive.tare_position();
-    Right_Back_Drive.tare_position();
+    Left_Drive.tare_position();
+    Right_Drive.tare_position();
+    //Right_Front_Drive.tare_position();
+    //Right_Back_Drive.tare_position();
 }
 
 void driveBrake(){
-   Left_Front_Drive.set_brake_mode(MOTOR_BRAKE_BRAKE);
-   Left_Back_Drive.set_brake_mode(MOTOR_BRAKE_BRAKE);
-   Right_Front_Drive.set_brake_mode(MOTOR_BRAKE_BRAKE);
-   Right_Back_Drive.set_brake_mode(MOTOR_BRAKE_BRAKE);
+   Left_Drive.set_brake_mode(MOTOR_BRAKE_BRAKE);
+   Right_Drive.set_brake_mode(MOTOR_BRAKE_BRAKE);
+   //Right_Front_Drive.set_brake_mode(MOTOR_BRAKE_BRAKE);
+   //Right_Back_Drive.set_brake_mode(MOTOR_BRAKE_BRAKE);
 }
 
 void driveCoast(){

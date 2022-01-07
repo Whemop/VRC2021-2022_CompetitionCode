@@ -1,5 +1,6 @@
 #include "main.h"
 #include "autoSelect/selection.h"
+#include "functions.hpp"
 /**
  * NOTE: To get code to properly upload to the robot, you must first save the
  * entire project (File>Save All). Then open a command line (cmd.exe or
