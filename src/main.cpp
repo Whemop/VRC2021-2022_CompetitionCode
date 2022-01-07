@@ -23,6 +23,10 @@
  * (12/15/2021) Create an autonomous option that runs motor tests for debug []
  * (1/6/2022) Restructure definitions so all files reference define.cpp for motor
  * ports []
+ * (1/7/2022) Add an Inertial Sensor to robot []
+ * (1/7/2022) Add an Angular Velocity Sensor to robot []
+ * (1/7/2022) Add an Encoder on left side of robot []
+ * (1/7/2022) Add an Encoder on right side of robot []
  */
 
 /**
