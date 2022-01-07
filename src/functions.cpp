@@ -27,41 +27,41 @@ void driveBrake(){
 }
 
 void driveCoast(){
-   Left_Front_Drive.set_brake_mode(MOTOR_BRAKE_COAST);
-   Left_Back_Drive.set_brake_mode(MOTOR_BRAKE_COAST);
-   Right_Front_Drive.set_brake_mode(MOTOR_BRAKE_COAST);
-   Right_Back_Drive.set_brake_mode(MOTOR_BRAKE_COAST);
+   Left_Drive.set_brake_mode(MOTOR_BRAKE_COAST);
+   Right_Drive.set_brake_mode(MOTOR_BRAKE_COAST);
+   //Right_Front_Drive.set_brake_mode(MOTOR_BRAKE_COAST);
+   //Right_Back_Drive.set_brake_mode(MOTOR_BRAKE_COAST);
 }
 
 void driveHold(){
-   Left_Front_Drive.set_brake_mode(MOTOR_BRAKE_HOLD);
-   Left_Back_Drive.set_brake_mode(MOTOR_BRAKE_HOLD);
-   Right_Front_Drive.set_brake_mode(MOTOR_BRAKE_HOLD);
-   Right_Back_Drive.set_brake_mode(MOTOR_BRAKE_HOLD);
+   Left_Drive.set_brake_mode(MOTOR_BRAKE_HOLD);
+   Right_Drive.set_brake_mode(MOTOR_BRAKE_HOLD);
+   //Right_Front_Drive.set_brake_mode(MOTOR_BRAKE_HOLD);
+   //Right_Back_Drive.set_brake_mode(MOTOR_BRAKE_HOLD);
 }
 
 void moveLeftDriveTrain(int velocity){
-   Left_Front_Drive.move_voltage(velocity);
-   Left_Back_Drive.move_voltage(velocity);
+   Left_Drive.move_voltage(velocity);
+   //Left_Back_Drive.move_voltage(velocity);
 }
 
 void moveRightDriveTrain(int velocity){
-  Right_Front_Drive.move_voltage(velocity);
-  Right_Back_Drive.move_voltage(velocity);
+  Right_Drive.move_voltage(velocity);
+  //Right_Back_Drive.move_voltage(velocity);
 }
 
 void moveDriveTrain(int velocity){
-  Left_Front_Drive.move_voltage(velocity);
-  Left_Back_Drive.move_voltage(velocity);
-  Right_Front_Drive.move_voltage(velocity);
-  Right_Back_Drive.move_voltage(velocity);
+  Left_Drive.move_voltage(velocity);
+  //Left_Back_Drive.move_voltage(velocity);
+  Right_Drive.move_voltage(velocity);
+  //Right_Back_Drive.move_voltage(velocity);
 }
 
 void driveStop(){
-  Left_Front_Drive.move_velocity(0);
-  Left_Back_Drive.move_velocity(0);
-  Right_Front_Drive.move_velocity(0);
-  Right_Back_Drive.move_velocity(0);
+  Left_Drive.move_velocity(0);
+  //Left_Back_Drive.move_velocity(0);
+  Right_Drive.move_velocity(0);
+  //Right_Back_Drive.move_velocity(0);
 }
 
 //360 for one full wheel rotation
@@ -90,11 +90,12 @@ float percentToVoltage (float percent){
 
 
 
-void rollUptake(int velocity){
-  Left_Roller.move_velocity(velocity);
-  Right_Roller.move_velocity(velocity);
+void armUp(int velocity){
+  Left_Arm.move_velocity(velocity);
+  Right_Arm.move_velocity(velocity);
 }
 
+/* Legacy function, recommend removal
 void unfold(){
   Arm.move_voltage(12000);
   pros::delay(800);
@@ -103,6 +104,7 @@ void unfold(){
   Arm.move_velocity(0);
   Arm.set_brake_mode(MOTOR_BRAKE_HOLD);
 }
+*/
 
 float inertRoll;
 
