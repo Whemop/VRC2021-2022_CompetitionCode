@@ -190,7 +190,8 @@ void autonomous() {
 		pros::delay(1000);
 		left_wheel.move_velocity(100);
 		right_wheel.move_velocity(100);
-		pros::delay(6000);``
+		pros::delay(6000);
+
 	}
 }
 

@@ -1,3 +1,5 @@
+/* Keeping code for example's sake
+
 #include "main.h"
 #include "functions.hpp"
 
@@ -118,3 +120,4 @@ frontBlue();
 
 }
 //All these chains of commands, rest in peace to Harriet Tubman
+*/

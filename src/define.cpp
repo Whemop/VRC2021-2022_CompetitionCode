@@ -37,6 +37,5 @@ pros::Motor Right_Arm (Right_Arm_Port,MOTOR_GEARSET_36,true,MOTOR_ENCODER_DEGREE
 pros::Motor Rear_Left_Arm (Rear_Left_Arm_Port,MOTOR_GEARSET_18,false,MOTOR_ENCODER_DEGREES);
 pros::Motor Rear_Right_Arm (Rear_Right_Arm_Port,MOTOR_GEARSET_18,true,MOTOR_ENCODER_DEGREES);
 //pros::Motor Arm (Arm_Port,MOTOR_GEARSET_18,false,MOTOR_ENCODER_DEGREES);
-pros::ADIAnalogIn Ang_Pot (Ang_Pot_Port); // Missing Hardware
 pros::ADIEncoder rEnc (rEncP1,rEncP2,true); // Missing Hardware
 pros::ADIEncoder lEnc (lEncP1,lEncP2,false); // Missing Hardware

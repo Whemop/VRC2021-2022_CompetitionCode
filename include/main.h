@@ -46,9 +46,9 @@ extern pros::Motor Rear_Right_Arm;
 //extern pros::ADIAnalogIn Ang_Pot;
 //extern pros::Motor Arm;
 extern pros::Controller master;
-//extern pros::Imu inert;
-//extern pros::ADIEncoder rEnc;
-//extern pros::ADIEncoder lEnc;
+extern pros::Imu inert;
+extern pros::ADIEncoder rEnc;
+extern pros::ADIEncoder lEnc;
 
 //
 class Timer {

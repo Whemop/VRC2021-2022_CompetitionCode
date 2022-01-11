@@ -279,7 +279,7 @@ else if(direction == "r" || direction == "l"){
   inertRoll = inertRoll + roll;
   pros::delay(20);
 }
-
+ /* Unused Code, recommend removal
 void stackSet(float TimeOut){
   float AngMin = 1500;
   float AngMax = 10;
@@ -299,6 +299,8 @@ void stackSet(float TimeOut){
   Angler.move_velocity(0);
   drive("f",4,400,30);
 }
+*/
+
 // void setRake(int target,int timeOut,int velocity){
 //   int rakeError = 0;
 //   float rakeLast;
