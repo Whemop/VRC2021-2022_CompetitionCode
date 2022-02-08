@@ -5,9 +5,9 @@
 
 void resetSensors(void);
 void resetDriveTrain(void);
-void driveTrainBreaking(void);
-void driveTrainCoasting(void);
-void driveTrainHolding(void);
+void driveBrake(void);
+void driveCoast(void);
+void driveHold(void);
 void moveLeftDriveTrain(int velocity);
 void moveRightDriveTrain(int velocity);
 void moveDriveTrain(int velocity);

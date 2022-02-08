@@ -122,6 +122,7 @@ void autonomous() {
 
 	//Red Right
 	if(selector::auton == 2){
+		/* Old Autonomous
 		left_wheel.move_velocity(100);
 		right_wheel.move_velocity(100);
 		pros::delay(2000);
@@ -135,6 +136,10 @@ void autonomous() {
 		pros::delay(2000);
 		left_wheel.move_velocity(0);
 		right_wheel.move_velocity(0);
+		*/
+		driveBrake();
+		//drive(std::string direction, float target, int timeOut, int maxVelocity)
+		drive("f",48,1000,100); 
 	}
 
 	//Red Do Nothing
