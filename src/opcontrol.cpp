@@ -1,3 +1,4 @@
+/*
 #include "main.h"
 
 void opcontrol() {
@@ -97,3 +98,4 @@ pros::lcd::print(5,"Left Encoder: %d ticks\n",lEnc.get_value());
 		pros::delay(20);  //Cortex Boy Needs a Break
 	}
 }
+*/
