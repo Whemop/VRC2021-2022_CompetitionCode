@@ -106,10 +106,14 @@ void autonomous() {
 	//Red Left
 	if(selector::auton == 1){
 		front_loader.move_relative(-1000, 100);
+		pros::delay(1000);
 		front_loader.move_relative(0, 100);
+		pros::delay(1000);
 		left_wheel.move_velocity(-100);
 		right_wheel.move_velocity(-100);
 		pros::delay(1000);
+		left_wheel.move_velocity(0);
+		right_wheel.move_velocity(0);
 		//.move_relative is writen with a target position and velocity, the target
 		//position is stored in Encoder Units, which can be found on the Vex
 		//Robotics Spec page for the v5 Motors.
