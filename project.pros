@@ -321,8 +321,8 @@
         "upload_options": {
             "compress_bin": true,
             "description": "Created with Happy Thoughts and Github Magic",
-            "remote_name": "Experimental",
-            "slot": 2
+            "remote_name": "VRC2021",
+            "slot": 1
         }
     }
 }

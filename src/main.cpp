@@ -107,7 +107,7 @@ void autonomous() {
 	if(selector::auton == 1){
 		front_loader.move_relative(-1000, 100);
 		pros::delay(1000);
-		front_loader.move_relative(0, 100);
+		front_loader.move_relative(1000, 100);
 		pros::delay(1000);
 		left_wheel.move_velocity(-100);
 		right_wheel.move_velocity(-100);
