@@ -139,7 +139,7 @@ void autonomous() {
 		*/
 		driveBrake();
 		//drive(std::string direction, float target, int timeOut, int maxVelocity)
-		drive("f",48,1000,100); 
+		drive("f",12,10000,100);
 	}
 
 	//Red Do Nothing

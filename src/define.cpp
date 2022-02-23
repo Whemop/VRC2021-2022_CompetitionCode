@@ -9,13 +9,11 @@ Don't forget to add the extern in the main.h file
 
 #define Left_Arm_Port 2
 #define Right_Arm_Port 12
-#define Right_Drive_Port 13
+#define Right_Drive_Port 11
 #define Left_Drive_Port 20
 #define Rear_Left_Arm_Port 3
 #define Rear_Right_Arm_Port 10
 #define Front_Loader_Port 6
-
-// Missing Hardware
 #define Ang_Pot_Port 'A'
 #define lEncP1 'C'
 #define lEncP2 'D'
@@ -38,4 +36,4 @@ pros::Motor Rear_Left_Arm (Rear_Left_Arm_Port,MOTOR_GEARSET_18,false,MOTOR_ENCOD
 pros::Motor Rear_Right_Arm (Rear_Right_Arm_Port,MOTOR_GEARSET_18,true,MOTOR_ENCODER_DEGREES);
 //pros::Motor Arm (Arm_Port,MOTOR_GEARSET_18,false,MOTOR_ENCODER_DEGREES);
 pros::ADIEncoder rEnc (rEncP1,rEncP2,true); // Missing Hardware
-pros::ADIEncoder lEnc (lEncP1,lEncP2,false); // Missing Hardware
+pros::ADIEncoder lEnc (lEncP1,lEncP2,true); // Missing Hardware

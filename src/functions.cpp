@@ -8,8 +8,8 @@ void resetSensors(){
    Right_Arm.tare_position();
    Rear_Left_Arm.tare_position();
    Rear_Right_Arm.tare_position();
-   //rEnc.reset();
-   //lEnc.reset();
+   rEnc.reset();
+   lEnc.reset();
 }
 
 void resetDriveTrain(){
@@ -111,7 +111,7 @@ float inertRoll;
 void drive(std::string direction, float target, int timeOut, int maxVelocity){
   resetSensors();
   //Constants//
-  float kP = 20;
+  float kP = 10;
   float kP_t = 6;
   float kI = 0.01;
   float kI_t = 0.01;

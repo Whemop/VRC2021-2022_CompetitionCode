@@ -14,7 +14,7 @@
      lv_obj_set_width(btn, width - 20);
      return LV_RES_OK;
  }
-
+/* Removed due to conflict in main.cpp
 void initialize() {
   pros::lcd::initialize();
   inert.reset();
@@ -29,16 +29,16 @@ void initialize() {
 
 
 
-/**
+
  * Runs while the robot is in the disabled state of Field Management System or
  * the VEX Competition Switch, following either autonomous or opcontrol. When
  * the robot is enabled, this task will exit.
- */
+ 
 void disabled() {
 
 }
 
-/**
+
  * Runs after initialize(), and before autonomous when connected to the Field
  * Management System or the VEX Competition Switch. This is intended for
  * competition-specific initialization routines, such as an autonomous selector
@@ -46,8 +46,9 @@ void disabled() {
  *
  * This task will exit when the robot is enabled and autonomous or opcontrol
  * starts.
- */
+
 
 void competition_initialize() {
 
 }
+*/
